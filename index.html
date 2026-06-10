@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Holovko — Autoaufbereitung Essen</title>
+  <meta name="description" content="Professionelle Autoaufbereitung in Essen. PDR, Chrom-Delete, Keramikbeschichtung, Scheibentönung und mehr. Studio Holovko – Schederhofstraße 63, Essen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold:        #c9a84c;
+      --gold-light:  #e8c46a;
+      --gold-dim:    rgba(201, 168, 76, 0.15);
+      --bg:          #080808;
+      --bg-2:        #0e0e0e;
+      --bg-3:        #141414;
+      --text:        #f0ede8;
+      --muted:       #7a7672;
+      --border:      rgba(201, 168, 76, 0.14);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow Condensed', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 64px;
+      transition: padding .4s ease, background .4s ease, border-color .4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      padding: 14px 64px;
+      background: rgba(8,8,8,.94);
+      backdrop-filter: blur(22px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 21px;
+      letter-spacing: 3px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 300;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--text);
+      transition: all .3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ─── HERO ─── */
+    #hero {
+      height: 100svh;
+      min-height: 640px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 64px;
+      overflow: hidden;
+    }
+
+    /* Atmospheric diagonal stripe */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,.04) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 50% at 20% 80%, rgba(201,168,76,.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* Diagonal gold slash */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
+      opacity: .2;
+    }
+
+    /* Grain overlay */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Car SVG */
+    .hero-car {
+      position: absolute;
+      right: -2%;
+      bottom: 4%;
+      width: 54vw;
+      max-width: 860px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .8s ease .2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(76px, 13vw, 164px);
+      line-height: .88;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeUp .8s ease .4s forwards;
+    }
+    .hero-title .line-gold { color: var(--gold); }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2.2vw, 26px);
+      color: var(--muted);
+      font-weight: 300;
+      margin: 24px 0 52px;
+      opacity: 0;
+      animation: fadeUp .8s ease .6s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s ease .8s forwards;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 44px;
+      background: var(--gold);
+      color: #060606;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%);
+      transition: background .3s, transform .3s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .btn-ghost::after { content: '↓'; font-size: 16px; }
+    .btn-ghost:hover { color: var(--gold); }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 44px;
+      left: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.3s forwards;
+    }
+    .scroll-cue-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+    .scroll-cue-line {
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
+      animation: scrollDrop 2s ease infinite;
+    }
+
+    /* ─── TICKER ─── */
+    .ticker-strip {
+      background: var(--gold);
+      overflow: hidden;
+      padding: 11px 0;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 36px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: #060606;
+      white-space: nowrap;
+    }
+    .ticker-sep {
+      width: 4px;
+      height: 4px;
+      background: rgba(0,0,0,.35);
+      border-radius: 50%;
+      margin-left: 36px;
+    }
+
+    /* ─── SECTION SHARED ─── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 60px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ─── ÜBER UNS ─── */
+    #ueber-uns {
+      padding: 130px 64px;
+      position: relative;
+    }
+
+    .usp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .usp-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(46px, 6vw, 84px);
+      line-height: .93;
+      margin-bottom: 32px;
+    }
+    .usp-text h2 em { color: var(--gold); font-style: normal; }
+
+    .usp-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+    }
+    .pill {
+      padding: 7px 18px;
+      border: 1px solid var(--border);
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: border-color .3s, color .3s;
+    }
+    .pill:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Chrome Delete feature card */
+    .feature-card {
+      background: var(--bg-3);
+      padding: 56px 52px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .feature-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #060606;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 5px 14px;
+      margin-bottom: 26px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      line-height: .95;
+      margin-bottom: 28px;
+    }
+
+    .chrome-split {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .chrome-before, .chrome-after {
+      flex: 1;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 2px;
+    }
+    .chrome-before {
+      background: linear-gradient(135deg, #b0b0b0, #e6e6e6, #a4a4a4, #d0d0d0, #b8b8b8);
+      color: #1a1a1a;
+    }
+    .chrome-after {
+      background: linear-gradient(135deg, #191919, #2a2a2a, #111, #202020);
+      color: var(--gold);
+      border: 1px solid var(--border);
+    }
+    .chrome-arrow { color: var(--gold); font-size: 22px; flex-shrink: 0; }
+
+    .feature-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ─── LEISTUNGEN ─── */
+    #leistungen {
+      padding: 130px 64px;
+      background: var(--bg-2);
+      position: relative;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 72px;
+    }
+    .services-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 9vw, 110px);
+      line-height: .88;
+    }
+    .services-h2 em { display: block; color: var(--gold); font-style: normal; }
+
+    .services-big-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,.18);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .service-card {
+      background: var(--bg-3);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: background .35s ease, transform .35s ease;
+      border: 1px solid transparent;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width .4s ease;
+    }
+    .service-card:hover {
+      background: #0a0a0a;
+      border-color: var(--border);
+      transform: translateY(-5px);
+    }
+    .service-card:hover::after { width: 100%; }
+
+    .s-num {
+      position: absolute;
+      top: 18px; right: 22px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,.08);
+      line-height: 1;
+      transition: -webkit-text-stroke-color .35s;
+    }
+    .service-card:hover .s-num { -webkit-text-stroke-color: rgba(201,168,76,.25); }
+
+    .s-icon {
+      width: 44px; height: 44px;
+      color: var(--gold);
+      opacity: .85;
+      margin-bottom: 20px;
+      transition: opacity .3s;
+    }
+    .service-card:hover .s-icon { opacity: 1; }
+
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .service-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ─── KONTAKT ─── */
+    #kontakt {
+      padding: 130px 64px;
+      position: relative;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 7.5vw, 96px);
+      line-height: .9;
+      margin-bottom: 56px;
+    }
+    .contact-info h2 span { display: block; color: var(--gold); }
+
+    .c-detail {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      padding-bottom: 36px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .c-detail:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .c-icon {
+      width: 38px; height: 38px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .c-text strong {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .c-text span, .c-text a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      color: var(--text);
+      text-decoration: none;
+      line-height: 1.4;
+      transition: color .3s;
+    }
+    .c-text a:hover { color: var(--gold); }
+
+    /* Map */
+    .map-box {
+      min-height: 520px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .map-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    /* Radial vignette on grid */
+    .map-grid-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, var(--bg-3) 100%);
+    }
+    .map-pin-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .map-dot {
+      width: 14px; height: 14px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(201,168,76,.2), 0 0 0 14px rgba(201,168,76,.08);
+      animation: pinPulse 2.4s ease infinite;
+    }
+    .map-label {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 18px 28px;
+      text-align: center;
+    }
+    .map-label strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .map-label span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 30px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .3s;
+    }
+    .map-btn:hover { background: var(--gold); color: #060606; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #040404;
+      border-top: 1px solid var(--border);
+      padding: 36px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: var(--muted); letter-spacing: .5px; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes scrollDrop {
+      0%, 100% { opacity: .3; transform: scaleY(1); transform-origin: top; }
+      50%       { opacity: 1; transform: scaleY(1.08); transform-origin: top; }
+    }
+    @keyframes pinPulse {
+      0%, 100% { box-shadow: 0 0 0 6px rgba(201,168,76,.2), 0 0 0 14px rgba(201,168,76,.08); }
+      50%       { box-shadow: 0 0 0 10px rgba(201,168,76,.28), 0 0 0 22px rgba(201,168,76,.05); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity .75s cubic-bezier(.25,.46,.45,.94), transform .75s cubic-bezier(.25,.46,.45,.94);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      nav, nav.scrolled { padding-left: 40px; padding-right: 40px; }
+      #hero { padding: 0 40px; }
+      #ueber-uns, #leistungen, #kontakt { padding-left: 40px; padding-right: 40px; }
+      footer { padding-left: 40px; padding-right: 40px; }
+      .usp-grid { grid-template-columns: 1fr; gap: 56px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .map-box { min-height: 360px; }
+    }
+
+    @media (max-width: 768px) {
+      nav, nav.scrolled { padding-left: 24px; padding-right: 24px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(8,8,8,.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+        z-index: 250;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links.open a { font-size: 26px; letter-spacing: 4px; color: var(--text); }
+      .nav-toggle { display: flex; }
+
+      #hero { padding: 0 24px; min-height: 600px; }
+      .hero-car { display: none; }
+      #hero::after { display: none; }
+      .scroll-cue { left: 24px; }
+
+      #ueber-uns, #leistungen, #kontakt { padding: 88px 24px; }
+      footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .services-big-num { font-size: 64px; }
+      .feature-card { padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">STUDIO <span>HOLOVKO</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#ueber-uns" onclick="closeNav()">Über uns</a></li>
+    <li><a href="#leistungen" onclick="closeNav()">Leistungen</a></li>
+    <li><a href="#kontakt" onclick="closeNav()">Kontakt</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <!-- Car illustration -->
+  <svg class="hero-car" viewBox="0 0 900 310" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M58,246 L80,246 L84,230 L102,206 L124,185 L165,164 L226,143 L312,127 L428,118 L526,119 L610,128 L668,148 L712,170 L738,192 L752,214 L756,246 Z"
+          fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.22)" stroke-width="1.2"/>
+    <path d="M165,164 L204,130 L292,113 L392,106 L490,107 L564,116 L630,140 L668,160"
+          stroke="rgba(201,168,76,0.16)" stroke-width="1" fill="none"/>
+    <!-- windows -->
+    <path d="M178,161 L214,128 L296,113 L376,109 L376,158 Z"
+          fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.14)" stroke-width="1"/>
+    <path d="M386,108 L490,107 L492,158 L380,158 Z"
+          fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.14)" stroke-width="1"/>
+    <path d="M502,108 L564,116 L628,140 L634,159 L497,159 Z"
+          fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.14)" stroke-width="1"/>
+    <!-- door lines -->
+    <line x1="202" y1="159" x2="202" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+    <line x1="380" y1="108" x2="380" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+    <line x1="496" y1="108" x2="496" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+    <line x1="634" y1="159" x2="634" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+    <!-- wheel arches -->
+    <path d="M82,246 Q104,200 148,200 Q192,200 212,246" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" fill="none"/>
+    <path d="M590,246 Q612,200 656,200 Q700,200 720,246" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" fill="none"/>
+    <!-- wheels -->
+    <circle cx="148" cy="254" r="40" stroke="rgba(201,168,76,0.28)" stroke-width="1.2" fill="rgba(201,168,76,0.025)"/>
+    <circle cx="148" cy="254" r="25" stroke="rgba(201,168,76,0.18)" stroke-width="1" fill="none"/>
+    <circle cx="148" cy="254" r="7"  fill="rgba(201,168,76,0.14)"/>
+    <circle cx="656" cy="254" r="40" stroke="rgba(201,168,76,0.28)" stroke-width="1.2" fill="rgba(201,168,76,0.025)"/>
+    <circle cx="656" cy="254" r="25" stroke="rgba(201,168,76,0.18)" stroke-width="1" fill="none"/>
+    <circle cx="656" cy="254" r="7"  fill="rgba(201,168,76,0.14)"/>
+    <!-- headlight -->
+    <rect x="60" y="218" width="22" height="13" rx="2" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+    <!-- taillight -->
+    <rect x="734" y="218" width="18" height="13" rx="2" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+    <!-- ground line -->
+    <line x1="20" y1="294" x2="880" y2="294" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Essen, Deutschland — Professionelle Fahrzeugpflege</div>
+    <h1 class="hero-title">
+      AUTO<br>
+      <span class="line-gold">AUFBEREITUNG</span>
+    </h1>
+    <p class="hero-sub">Studio Holovko — Perfektion in jedem Detail</p>
+    <div class="hero-cta">
+      <a href="#leistungen" class="btn-gold">Unsere Leistungen</a>
+      <a href="#kontakt" class="btn-ghost">Kontakt aufnehmen</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="scroll-cue-label">Scrollen</span>
+    <div class="scroll-cue-line"></div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker-strip" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">PDR Dellenentfernung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Chrom-Delete</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Keramikbeschichtung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Scheibentönung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Autopolitur</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Glasversiegelung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Innenraumreinigung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Scheinwerfer Aufbereitung</span><span class="ticker-sep"></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">PDR Dellenentfernung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Chrom-Delete</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Keramikbeschichtung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Scheibentönung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Autopolitur</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Glasversiegelung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Innenraumreinigung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Scheinwerfer Aufbereitung</span><span class="ticker-sep"></span>
+  </div>
+</div>
+
+<!-- ─── ÜBER UNS ─── -->
+<section id="ueber-uns">
+  <div class="section-label reveal">Über Studio Holovko</div>
+  <div class="usp-grid">
+
+    <div class="usp-text reveal">
+      <h2>PRÄZISION<br>DIE MAN <em>SIEHT.</em></h2>
+      <p>Wir behandeln jedes Fahrzeug mit der Sorgfalt, die es verdient. Professionelle Werkzeuge, bewährte Techniken und ein uncompromissliches Auge für Details — das ist unser Versprechen.</p>
+      <p>Vom Chrom-Delete über Keramikbeschichtung bis zur vollständigen Innenraumreinigung: Wir bringen Ihr Fahrzeug auf ein neues Niveau — ohne Schäden, ohne Kompromisse.</p>
+      <div class="pill-row">
+        <span class="pill">Saubere Verarbeitung</span>
+        <span class="pill">Keine Originalschäden</span>
+        <span class="pill">Langlebige Ergebnisse</span>
+        <span class="pill">Rückstandslos entfernbar</span>
+        <span class="pill">UV-Schutz</span>
+      </div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-badge">Highlight-Leistung</div>
+      <h3>ANTI-CHROM<br>FOLIERUNG</h3>
+      <div class="chrome-split">
+        <div class="chrome-before">Vorher — Chrom</div>
+        <div class="chrome-arrow">→</div>
+        <div class="chrome-after">Nachher — Schwarz</div>
+      </div>
+      <p>Wir folieren Chromteile Ihres Fahrzeugs professionell in Schwarz — glänzend oder matt. Geeignet für Fensterleisten, Kühlergrill, Zierleisten, Embleme und Spiegelkappen. Schützt vor Kratzern, Witterung und UV-Strahlung. Bei Bedarf rückstandslos entfernbar.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── LEISTUNGEN ─── -->
+<section id="leistungen">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">Was wir anbieten</div>
+      <div class="services-h2">UNSERE<br><em>LEISTUNGEN</em></div>
+    </div>
+    <div class="services-big-num">11</div>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- 01 -->
+    <div class="service-card reveal">
+      <span class="s-num">01</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M6,34 Q10,20 22,18 Q34,20 38,34"/>
+        <path d="M12,30 Q16,22 22,21 Q28,22 32,30"/>
+        <circle cx="22" cy="26" r="3" fill="currentColor" stroke="none"/>
+        <path d="M4,38 L40,38"/>
+      </svg>
+      <h3>Dellenentfernung (PDR)</h3>
+      <p>Lackschadenfreie Entfernung von Dellen und Beulen — ohne Neulackierung, ohne Spachtel.</p>
+    </div>
+
+    <!-- 02 -->
+    <div class="service-card reveal">
+      <span class="s-num">02</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="6" y="12" width="14" height="20" rx="2"/>
+        <rect x="24" y="12" width="14" height="20" rx="2" fill="rgba(201,168,76,0.1)"/>
+        <path d="M20,22 L24,22"/>
+        <circle cx="13" cy="22" r="3"/>
+        <circle cx="31" cy="22" r="3" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3>Anti-Chrom Folierung</h3>
+      <p>Chrom-Delete in Schwarz (glänzend oder matt) für Leisten, Grill, Embleme und Spiegelkappen.</p>
+    </div>
+
+    <!-- 03 -->
+    <div class="service-card reveal">
+      <span class="s-num">03</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="6" y="10" width="32" height="24" rx="2"/>
+        <path d="M6,10 L38,34" stroke-opacity=".25"/>
+        <circle cx="32" cy="13" r="5" fill="rgba(201,168,76,0.15)" stroke="currentColor"/>
+        <path d="M30,13 L34,13 M32,11 L32,15"/>
+      </svg>
+      <h3>Scheibentönung</h3>
+      <p>Professionelle Folientönung für Seiten- und Heckscheiben — Sichtschutz, Wärme- und UV-Schutz.</p>
+    </div>
+
+    <!-- 04 -->
+    <div class="service-card reveal">
+      <span class="s-num">04</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <circle cx="22" cy="22" r="16"/>
+        <circle cx="22" cy="22" r="9"/>
+        <circle cx="22" cy="22" r="3" fill="currentColor" stroke="none"/>
+        <path d="M6,22 L13,22 M31,22 L38,22 M22,6 L22,13 M22,31 L22,38"/>
+      </svg>
+      <h3>Felgenreinigung & Radwäsche</h3>
+      <p>Intensive Felgen- und Radwäsche — Bremsstaubreste und hartnäckige Ablagerungen vollständig entfernt.</p>
+    </div>
+
+    <!-- 05 -->
+    <div class="service-card reveal">
+      <span class="s-num">05</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M8,30 Q12,14 22,12 Q32,14 36,30"/>
+        <path d="M12,34 L32,34"/>
+        <path d="M15,20 L17,22 M27,17 L29,19 M22,14 L22,18"/>
+        <path d="M14,38 L30,38"/>
+      </svg>
+      <h3>Autopolitur & Aufbereitung</h3>
+      <p>Maschinelle Politur und vollständige Außenaufbereitung für strahlenden Hochglanz.</p>
+    </div>
+
+    <!-- 06 -->
+    <div class="service-card reveal">
+      <span class="s-num">06</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M8,36 L36,8"/>
+        <path d="M13,31 L31,13" stroke-dasharray="2 3" stroke-opacity=".4"/>
+        <circle cx="18" cy="26" r="6"/>
+        <path d="M14,22 L22,30"/>
+      </svg>
+      <h3>Lokale Kratzerentfernung</h3>
+      <p>Gezielte Kratzerentfernung und Lackaufbereitung für ein makelloses Fahrzeugbild.</p>
+    </div>
+
+    <!-- 07 -->
+    <div class="service-card reveal">
+      <span class="s-num">07</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M22,6 L38,16 L38,34 L22,40 L6,34 L6,16 Z"/>
+        <path d="M22,13 L32,19 L32,31 L22,36 L12,31 L12,19 Z" stroke-dasharray="3 3" stroke-opacity=".4"/>
+        <circle cx="22" cy="25" r="4" fill="rgba(201,168,76,0.15)"/>
+      </svg>
+      <h3>Keramikbeschichtung</h3>
+      <p>Langlebiger Schutzfilm durch Keramikbeschichtung — Hydrophobieeffekt, UV-Schutz und leichte Reinigung.</p>
+    </div>
+
+    <!-- 08 -->
+    <div class="service-card reveal">
+      <span class="s-num">08</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="4" y="12" width="36" height="22" rx="2"/>
+        <path d="M4,12 L22,24 L40,12"/>
+        <circle cx="30" cy="18" r="5" fill="rgba(201,168,76,0.12)" stroke="currentColor"/>
+        <path d="M28,18 L32,18 M30,16 L30,20"/>
+      </svg>
+      <h3>Scheiben Polieren</h3>
+      <p>Polieren von Frontscheibe, Seiten- und Heckscheibe — klare Sicht, keine Schleier oder Kratzer.</p>
+    </div>
+
+    <!-- 09 -->
+    <div class="service-card reveal">
+      <span class="s-num">09</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M8,24 Q8,12 18,10 L26,10 Q36,12 36,24 Q36,30 26,32 L26,38 L18,38 L18,32 Q8,30 8,24 Z"/>
+        <path d="M14,22 L30,18 M14,25 L26,23" stroke-opacity=".4"/>
+        <circle cx="22" cy="24" r="3" fill="rgba(201,168,76,0.25)" stroke="none"/>
+      </svg>
+      <h3>Scheinwerfer Aufbereitung</h3>
+      <p>Aufbereitung vergilbter und matter Scheinwerfer mit abschließender Schutzbeschichtung.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="service-card reveal">
+      <span class="s-num">10</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M22,8 L27,22 Q33,29 33,35 Q33,42 22,42 Q11,42 11,35 Q11,29 17,22 Z" fill="rgba(201,168,76,0.06)"/>
+        <path d="M17,33 Q20,28 25,30"/>
+        <path d="M15,37 Q20,32 27,35" stroke-opacity=".45"/>
+      </svg>
+      <h3>Glasversiegelung</h3>
+      <p>Hydrophobe Versiegelung für optimale Wasserabweisung — der klassische Regenabweiser-Effekt.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="service-card reveal">
+      <span class="s-num">11</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="6" y="10" width="32" height="28" rx="1"/>
+        <path d="M12" y1="10" x2="12" y2="8"/>
+        <path d="M12,10 L12,8 M32,10 L32,8"/>
+        <path d="M10,20 L34,20"/>
+        <path d="M10,27 L28,27"/>
+        <path d="M10,34 L22,34"/>
+        <circle cx="34" cy="32" r="7" fill="rgba(201,168,76,0.08)" stroke="currentColor"/>
+        <path d="M31,32 L33,34 L37,29" stroke-width="1.5"/>
+      </svg>
+      <h3>Innenraumreinigung</h3>
+      <p>Professionelle Innenreinigung jeder Schwierigkeit — Sitze, Dachhimmel, Teppiche und Armaturenbrett.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── KONTAKT ─── -->
+<section id="kontakt">
+  <div class="section-label reveal">So finden Sie uns</div>
+  <div class="contact-grid">
+
+    <div class="contact-info reveal">
+      <h2>KONTAKT<br><span>AUFNEHMEN</span></h2>
+
+      <div class="c-detail">
+        <svg class="c-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <path d="M19,3 Q28,3 28,12 Q28,23 19,34 Q10,23 10,12 Q10,3 19,3 Z"/>
+          <circle cx="19" cy="13" r="4"/>
+        </svg>
+        <div class="c-text">
+          <strong>Adresse</strong>
+          <span>Schederhofstraße 63, Box 19<br>45145 Essen, Deutschland</span>
+        </div>
+      </div>
+
+      <div class="c-detail">
+        <svg class="c-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <path d="M7,9 Q7,5 11,5 L15,5 L19,15 L15,18 Q17,23 21,27 Q25,31 29,33 L32,29 L35,33 Q35,37 31,37 L27,37 Q13,37 7,9 Z"/>
+        </svg>
+        <div class="c-text">
+          <strong>Telefon</strong>
+          <a href="tel:+4916091458084">+49 160 91458084</a>
+        </div>
+      </div>
+
+      <div class="c-detail">
+        <svg class="c-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <rect x="3" y="7" width="32" height="24" rx="2"/>
+          <path d="M3,7 L19,21 L35,7"/>
+        </svg>
+        <div class="c-text">
+          <strong>E-Mail</strong>
+          <a href="mailto:info@studio-holovko.de">info@studio-holovko.de</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-box reveal">
+      <div class="map-grid-bg"></div>
+      <div class="map-pin-wrap">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <strong>STUDIO HOLOVKO</strong>
+          <span>Schederhofstraße 63, Box 19<br>45145 Essen</span>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Schederhofstra%C3%9Fe+63%2C+45145+Essen" target="_blank" rel="noopener noreferrer" class="map-btn">
+          In Google Maps öffnen &nbsp;→
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">STUDIO <span>HOLOVKO</span></div>
+  <div class="footer-copy">© 2025 Autoaufbereitung Studio Holovko · Essen</div>
+</footer>
+
+<script>
+  // ── Nav scroll ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 48);
+  }, { passive: true });
+
+  // ── Mobile nav ──
+  const toggle = document.getElementById('navToggle');
+  function toggleNav() {
+    toggle.classList.toggle('open');
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeNav() {
+    toggle.classList.remove('open');
+    document.getElementById('navLinks').classList.remove('open');
+  }
+
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+
+  // Stagger cards within the same grid row
+  document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
+    card.style.transitionDelay = `${(i % 3) * 0.11}s`;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
