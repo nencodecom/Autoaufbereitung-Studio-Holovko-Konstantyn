@@ -10,15 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold:        #c9a84c;
-      --gold-light:  #e8c46a;
-      --gold-dim:    rgba(201, 168, 76, 0.15);
-      --bg:          #080808;
-      --bg-2:        #0e0e0e;
-      --bg-3:        #141414;
-      --text:        #f0ede8;
-      --muted:       #7a7672;
-      --border:      rgba(201, 168, 76, 0.14);
+      --accent:     #ffffff;
+      --accent-mid: rgba(255,255,255,.55);
+      --accent-dim: rgba(255,255,255,.1);
+      --bg:         #080808;
+      --bg-2:       #0e0e0e;
+      --bg-3:       #141414;
+      --text:       #f0ede8;
+      --muted:      #787572;
+      --border:     rgba(255,255,255,.1);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,24 +39,29 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 64px;
+      padding: 16px 64px;
       transition: padding .4s ease, background .4s ease, border-color .4s ease;
       border-bottom: 1px solid transparent;
     }
     nav.scrolled {
-      padding: 14px 64px;
-      background: rgba(8,8,8,.94);
+      padding: 10px 64px;
+      background: rgba(8,8,8,.95);
       backdrop-filter: blur(22px);
       border-color: var(--border);
     }
+
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 21px;
-      letter-spacing: 3px;
-      color: var(--text);
+      display: flex;
+      align-items: center;
       text-decoration: none;
+      flex-shrink: 0;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;
+    }
 
     .nav-links {
       display: flex;
@@ -71,7 +76,7 @@
       text-transform: uppercase;
       transition: color .3s;
     }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-toggle {
       display: none;
@@ -104,27 +109,23 @@
       overflow: hidden;
     }
 
-    /* Atmospheric diagonal stripe */
     #hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,.04) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 50% at 20% 80%, rgba(201,168,76,.03) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,.018) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 50% at 20% 80%, rgba(255,255,255,.012) 0%, transparent 60%);
       pointer-events: none;
     }
-    /* Diagonal gold slash */
     #hero::after {
       content: '';
       position: absolute;
       top: 0; right: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
-      opacity: .2;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.14) 40%, rgba(255,255,255,.14) 60%, transparent);
     }
 
-    /* Grain overlay */
     .hero-grain {
       position: absolute;
       inset: 0;
@@ -133,7 +134,6 @@
       pointer-events: none;
     }
 
-    /* Car SVG */
     .hero-car {
       position: absolute;
       right: -2%;
@@ -157,7 +157,7 @@
       font-size: 11px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent-mid);
       margin-bottom: 28px;
       opacity: 0;
       animation: fadeUp .8s ease .2s forwards;
@@ -167,27 +167,28 @@
       display: block;
       width: 36px;
       height: 1px;
-      background: var(--gold);
+      background: var(--accent-mid);
       flex-shrink: 0;
     }
 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(76px, 13vw, 164px);
+      font-size: clamp(44px, 13vw, 164px);
       line-height: .88;
       letter-spacing: 2px;
       opacity: 0;
       animation: fadeUp .8s ease .4s forwards;
+      overflow-wrap: break-word;
     }
-    .hero-title .line-gold { color: var(--gold); }
+    .hero-title .line-accent { color: rgba(255,255,255,.52); }
 
     .hero-sub {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(18px, 2.2vw, 26px);
+      font-size: clamp(16px, 2.2vw, 26px);
       color: var(--muted);
       font-weight: 300;
-      margin: 24px 0 52px;
+      margin: 24px 0 48px;
       opacity: 0;
       animation: fadeUp .8s ease .6s forwards;
     }
@@ -195,18 +196,18 @@
     .hero-cta {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
       flex-wrap: wrap;
       opacity: 0;
       animation: fadeUp .8s ease .8s forwards;
     }
 
-    .btn-gold {
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 44px;
-      background: var(--gold);
+      padding: 15px 40px;
+      background: var(--text);
       color: #060606;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
@@ -216,8 +217,9 @@
       text-decoration: none;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%);
       transition: background .3s, transform .3s;
+      white-space: nowrap;
     }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); }
+    .btn-primary:hover { background: #ffffff; transform: translateY(-3px); }
 
     .btn-ghost {
       display: inline-flex;
@@ -229,13 +231,14 @@
       text-transform: uppercase;
       text-decoration: none;
       transition: color .3s;
+      white-space: nowrap;
     }
     .btn-ghost::after { content: '↓'; font-size: 16px; }
-    .btn-ghost:hover { color: var(--gold); }
+    .btn-ghost:hover { color: var(--text); }
 
     .scroll-cue {
       position: absolute;
-      bottom: 44px;
+      bottom: 40px;
       left: 64px;
       display: flex;
       flex-direction: column;
@@ -254,13 +257,13 @@
     .scroll-cue-line {
       width: 1px;
       height: 64px;
-      background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(255,255,255,.45) 0%, transparent 100%);
       animation: scrollDrop 2s ease infinite;
     }
 
     /* ─── TICKER ─── */
     .ticker-strip {
-      background: var(--gold);
+      background: var(--text);
       overflow: hidden;
       padding: 11px 0;
     }
@@ -272,18 +275,17 @@
     .ticker-item {
       display: inline-flex;
       align-items: center;
-      gap: 0;
       padding: 0 36px;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 15px;
       letter-spacing: 3px;
-      color: #060606;
+      color: #080808;
       white-space: nowrap;
     }
     .ticker-sep {
       width: 4px;
       height: 4px;
-      background: rgba(0,0,0,.35);
+      background: rgba(0,0,0,.22);
       border-radius: 50%;
       margin-left: 36px;
     }
@@ -296,7 +298,7 @@
       font-size: 10px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: rgba(255,255,255,.42);
       margin-bottom: 60px;
     }
     .section-label::before {
@@ -304,7 +306,7 @@
       display: block;
       width: 28px;
       height: 1px;
-      background: var(--gold);
+      background: rgba(255,255,255,.3);
       flex-shrink: 0;
     }
 
@@ -327,7 +329,7 @@
       line-height: .93;
       margin-bottom: 32px;
     }
-    .usp-text h2 em { color: var(--gold); font-style: normal; }
+    .usp-text h2 em { color: rgba(255,255,255,.55); font-style: normal; }
 
     .usp-text p {
       font-family: 'Cormorant Garamond', serif;
@@ -353,9 +355,8 @@
       color: var(--muted);
       transition: border-color .3s, color .3s;
     }
-    .pill:hover { border-color: var(--gold); color: var(--gold); }
+    .pill:hover { border-color: rgba(255,255,255,.4); color: var(--text); }
 
-    /* Chrome Delete feature card */
     .feature-card {
       background: var(--bg-3);
       padding: 56px 52px;
@@ -368,13 +369,13 @@
       position: absolute;
       top: -60px; right: -60px;
       width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,.035) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .feature-badge {
       display: inline-block;
-      background: var(--gold);
+      background: var(--text);
       color: #060606;
       font-size: 10px;
       letter-spacing: 3px;
@@ -415,10 +416,10 @@
     }
     .chrome-after {
       background: linear-gradient(135deg, #191919, #2a2a2a, #111, #202020);
-      color: var(--gold);
-      border: 1px solid var(--border);
+      color: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.14);
     }
-    .chrome-arrow { color: var(--gold); font-size: 22px; flex-shrink: 0; }
+    .chrome-arrow { color: var(--muted); font-size: 22px; flex-shrink: 0; }
 
     .feature-card p {
       font-family: 'Cormorant Garamond', serif;
@@ -446,14 +447,14 @@
       font-size: clamp(52px, 9vw, 110px);
       line-height: .88;
     }
-    .services-h2 em { display: block; color: var(--gold); font-style: normal; }
+    .services-h2 em { display: block; color: rgba(255,255,255,.42); font-style: normal; }
 
     .services-big-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 96px;
       line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(201,168,76,.18);
+      -webkit-text-stroke: 1px rgba(255,255,255,.12);
     }
 
     .services-grid {
@@ -476,7 +477,7 @@
       position: absolute;
       bottom: 0; left: 0;
       width: 0; height: 2px;
-      background: var(--gold);
+      background: var(--text);
       transition: width .4s ease;
     }
     .service-card:hover {
@@ -492,20 +493,19 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 52px;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(201,168,76,.08);
+      -webkit-text-stroke: 1px rgba(255,255,255,.06);
       line-height: 1;
       transition: -webkit-text-stroke-color .35s;
     }
-    .service-card:hover .s-num { -webkit-text-stroke-color: rgba(201,168,76,.25); }
+    .service-card:hover .s-num { -webkit-text-stroke-color: rgba(255,255,255,.18); }
 
     .s-icon {
       width: 44px; height: 44px;
-      color: var(--gold);
-      opacity: .85;
+      color: rgba(255,255,255,.68);
       margin-bottom: 20px;
-      transition: opacity .3s;
+      transition: color .3s;
     }
-    .service-card:hover .s-icon { opacity: 1; }
+    .service-card:hover .s-icon { color: var(--text); }
 
     .service-card h3 {
       font-size: 17px;
@@ -542,7 +542,7 @@
       line-height: .9;
       margin-bottom: 56px;
     }
-    .contact-info h2 span { display: block; color: var(--gold); }
+    .contact-info h2 span { display: block; color: rgba(255,255,255,.45); }
 
     .c-detail {
       display: flex;
@@ -556,7 +556,7 @@
 
     .c-icon {
       width: 38px; height: 38px;
-      color: var(--gold);
+      color: rgba(255,255,255,.5);
       flex-shrink: 0;
       margin-top: 3px;
     }
@@ -576,7 +576,7 @@
       line-height: 1.4;
       transition: color .3s;
     }
-    .c-text a:hover { color: var(--gold); }
+    .c-text a:hover { color: var(--accent); }
 
     /* Map */
     .map-box {
@@ -594,11 +594,10 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(201,168,76,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,.03) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
       background-size: 44px 44px;
     }
-    /* Radial vignette on grid */
     .map-grid-bg::after {
       content: '';
       position: absolute;
@@ -615,9 +614,9 @@
     }
     .map-dot {
       width: 14px; height: 14px;
-      background: var(--gold);
+      background: var(--text);
       border-radius: 50%;
-      box-shadow: 0 0 0 6px rgba(201,168,76,.2), 0 0 0 14px rgba(201,168,76,.08);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.14), 0 0 0 14px rgba(255,255,255,.05);
       animation: pinPulse 2.4s ease infinite;
     }
     .map-label {
@@ -643,21 +642,21 @@
       align-items: center;
       gap: 10px;
       padding: 13px 30px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
+      border: 1px solid rgba(255,255,255,.3);
+      color: var(--text);
       font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
       text-decoration: none;
       transition: all .3s;
     }
-    .map-btn:hover { background: var(--gold); color: #060606; }
+    .map-btn:hover { background: var(--text); color: #060606; }
 
     /* ─── FOOTER ─── */
     footer {
       background: #040404;
       border-top: 1px solid var(--border);
-      padding: 36px 64px;
+      padding: 32px 64px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -665,11 +664,15 @@
       gap: 16px;
     }
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
     }
-    .footer-logo span { color: var(--gold); }
+    .footer-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;
+    }
     .footer-copy { font-size: 12px; color: var(--muted); letter-spacing: .5px; }
 
     /* ─── ANIMATIONS ─── */
@@ -690,11 +693,10 @@
       50%       { opacity: 1; transform: scaleY(1.08); transform-origin: top; }
     }
     @keyframes pinPulse {
-      0%, 100% { box-shadow: 0 0 0 6px rgba(201,168,76,.2), 0 0 0 14px rgba(201,168,76,.08); }
-      50%       { box-shadow: 0 0 0 10px rgba(201,168,76,.28), 0 0 0 22px rgba(201,168,76,.05); }
+      0%, 100% { box-shadow: 0 0 0 6px rgba(255,255,255,.14), 0 0 0 14px rgba(255,255,255,.05); }
+      50%       { box-shadow: 0 0 0 10px rgba(255,255,255,.17), 0 0 0 22px rgba(255,255,255,.03); }
     }
 
-    /* Scroll reveal */
     .reveal {
       opacity: 0;
       transform: translateY(38px);
@@ -702,20 +704,24 @@
     }
     .reveal.in { opacity: 1; transform: translateY(0); }
 
-    /* ─── RESPONSIVE ─── */
+    /* ─── RESPONSIVE 1100px ─── */
     @media (max-width: 1100px) {
       nav, nav.scrolled { padding-left: 40px; padding-right: 40px; }
       #hero { padding: 0 40px; }
       #ueber-uns, #leistungen, #kontakt { padding-left: 40px; padding-right: 40px; }
       footer { padding-left: 40px; padding-right: 40px; }
-      .usp-grid { grid-template-columns: 1fr; gap: 56px; }
+      .usp-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: 1fr; }
       .map-box { min-height: 360px; }
     }
 
+    /* ─── RESPONSIVE 768px ─── */
     @media (max-width: 768px) {
-      nav, nav.scrolled { padding-left: 24px; padding-right: 24px; }
+      nav { padding: 12px 20px; }
+      nav.scrolled { padding: 8px 20px; }
+      .nav-logo img { height: 42px; }
+
       .nav-links {
         display: none;
         position: fixed;
@@ -728,20 +734,49 @@
         z-index: 250;
       }
       .nav-links.open { display: flex; }
-      .nav-links.open a { font-size: 26px; letter-spacing: 4px; color: var(--text); }
+      .nav-links.open a { font-size: 28px; letter-spacing: 4px; color: var(--text); }
+      .nav-links.open a:hover { color: rgba(255,255,255,.65); }
       .nav-toggle { display: flex; }
 
-      #hero { padding: 0 24px; min-height: 600px; }
+      #hero { padding: 0 20px; min-height: 100svh; }
       .hero-car { display: none; }
       #hero::after { display: none; }
-      .scroll-cue { left: 24px; }
+      .scroll-cue { left: 20px; bottom: 28px; }
+      .hero-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 18px; }
+      .hero-sub { font-size: clamp(15px, 4.5vw, 20px); margin-bottom: 36px; }
+      .hero-cta { gap: 16px; }
+      .btn-primary { padding: 14px 30px; }
 
-      #ueber-uns, #leistungen, #kontakt { padding: 88px 24px; }
-      footer { padding: 28px 24px; flex-direction: column; text-align: center; }
-      .services-grid { grid-template-columns: 1fr; }
-      .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .services-big-num { font-size: 64px; }
-      .feature-card { padding: 36px 28px; }
+      #ueber-uns, #leistungen, #kontakt { padding: 80px 20px; }
+      .section-label { margin-bottom: 40px; font-size: 9px; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 48px; }
+      .services-big-num { font-size: 60px; }
+      .service-card { padding: 32px 24px; }
+      .service-card:hover { transform: none; }
+
+      .feature-card { padding: 32px 24px; }
+      .feature-card h3 { font-size: 36px; }
+      .chrome-before, .chrome-after { height: 60px; font-size: 9px; }
+
+      .contact-info h2 { margin-bottom: 36px; }
+      .c-text span, .c-text a { font-size: 19px; }
+      .map-box { min-height: 300px; }
+      .map-label { padding: 14px 20px; }
+
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; gap: 12px; }
+      .footer-logo { justify-content: center; }
+      .footer-copy { font-size: 11px; }
+    }
+
+    /* ─── RESPONSIVE 420px ─── */
+    @media (max-width: 420px) {
+      .hero-title { font-size: clamp(40px, 13vw, 80px); }
+      .btn-primary { padding: 13px 24px; font-size: 11px; letter-spacing: 2px; }
+      .btn-ghost { font-size: 11px; letter-spacing: 2px; }
+      .feature-card h3 { font-size: 30px; }
+      .c-text span, .c-text a { font-size: 17px; }
     }
   </style>
 </head>
@@ -749,13 +784,15 @@
 
 <!-- ─── NAV ─── -->
 <nav id="mainNav">
-  <a href="#hero" class="nav-logo">STUDIO <span>HOLOVKO</span></a>
+  <a href="#hero" class="nav-logo">
+    <img src="public/Screenshot%202026-06-11%20142334.png" alt="Autoaufbereitung Studio Holovko">
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#ueber-uns" onclick="closeNav()">Über uns</a></li>
     <li><a href="#leistungen" onclick="closeNav()">Leistungen</a></li>
     <li><a href="#kontakt" onclick="closeNav()">Kontakt</a></li>
   </ul>
-  <div class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Menü">
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -764,51 +801,43 @@
 <section id="hero">
   <div class="hero-grain" aria-hidden="true"></div>
 
-  <!-- Car illustration -->
   <svg class="hero-car" viewBox="0 0 900 310" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M58,246 L80,246 L84,230 L102,206 L124,185 L165,164 L226,143 L312,127 L428,118 L526,119 L610,128 L668,148 L712,170 L738,192 L752,214 L756,246 Z"
-          fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.22)" stroke-width="1.2"/>
+          fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
     <path d="M165,164 L204,130 L292,113 L392,106 L490,107 L564,116 L630,140 L668,160"
-          stroke="rgba(201,168,76,0.16)" stroke-width="1" fill="none"/>
-    <!-- windows -->
+          stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
     <path d="M178,161 L214,128 L296,113 L376,109 L376,158 Z"
-          fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.14)" stroke-width="1"/>
+          fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
     <path d="M386,108 L490,107 L492,158 L380,158 Z"
-          fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.14)" stroke-width="1"/>
+          fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
     <path d="M502,108 L564,116 L628,140 L634,159 L497,159 Z"
-          fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.14)" stroke-width="1"/>
-    <!-- door lines -->
-    <line x1="202" y1="159" x2="202" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
-    <line x1="380" y1="108" x2="380" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
-    <line x1="496" y1="108" x2="496" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
-    <line x1="634" y1="159" x2="634" y2="244" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
-    <!-- wheel arches -->
-    <path d="M82,246 Q104,200 148,200 Q192,200 212,246" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" fill="none"/>
-    <path d="M590,246 Q612,200 656,200 Q700,200 720,246" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" fill="none"/>
-    <!-- wheels -->
-    <circle cx="148" cy="254" r="40" stroke="rgba(201,168,76,0.28)" stroke-width="1.2" fill="rgba(201,168,76,0.025)"/>
-    <circle cx="148" cy="254" r="25" stroke="rgba(201,168,76,0.18)" stroke-width="1" fill="none"/>
-    <circle cx="148" cy="254" r="7"  fill="rgba(201,168,76,0.14)"/>
-    <circle cx="656" cy="254" r="40" stroke="rgba(201,168,76,0.28)" stroke-width="1.2" fill="rgba(201,168,76,0.025)"/>
-    <circle cx="656" cy="254" r="25" stroke="rgba(201,168,76,0.18)" stroke-width="1" fill="none"/>
-    <circle cx="656" cy="254" r="7"  fill="rgba(201,168,76,0.14)"/>
-    <!-- headlight -->
-    <rect x="60" y="218" width="22" height="13" rx="2" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
-    <!-- taillight -->
-    <rect x="734" y="218" width="18" height="13" rx="2" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
-    <!-- ground line -->
-    <line x1="20" y1="294" x2="880" y2="294" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+          fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <line x1="202" y1="159" x2="202" y2="244" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    <line x1="380" y1="108" x2="380" y2="244" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    <line x1="496" y1="108" x2="496" y2="244" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    <line x1="634" y1="159" x2="634" y2="244" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    <path d="M82,246 Q104,200 148,200 Q192,200 212,246" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" fill="none"/>
+    <path d="M590,246 Q612,200 656,200 Q700,200 720,246" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" fill="none"/>
+    <circle cx="148" cy="254" r="40" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" fill="rgba(255,255,255,0.02)"/>
+    <circle cx="148" cy="254" r="25" stroke="rgba(255,255,255,0.14)" stroke-width="1" fill="none"/>
+    <circle cx="148" cy="254" r="7"  fill="rgba(255,255,255,0.1)"/>
+    <circle cx="656" cy="254" r="40" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" fill="rgba(255,255,255,0.02)"/>
+    <circle cx="656" cy="254" r="25" stroke="rgba(255,255,255,0.14)" stroke-width="1" fill="none"/>
+    <circle cx="656" cy="254" r="7"  fill="rgba(255,255,255,0.1)"/>
+    <rect x="60" y="218" width="22" height="13" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+    <rect x="734" y="218" width="18" height="13" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+    <line x1="20" y1="294" x2="880" y2="294" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
   </svg>
 
   <div class="hero-content">
     <div class="hero-eyebrow">Essen, Deutschland — Professionelle Fahrzeugpflege</div>
     <h1 class="hero-title">
       AUTO<br>
-      <span class="line-gold">AUFBEREITUNG</span>
+      <span class="line-accent">AUFBEREITUNG</span>
     </h1>
     <p class="hero-sub">Studio Holovko — Perfektion in jedem Detail</p>
     <div class="hero-cta">
-      <a href="#leistungen" class="btn-gold">Unsere Leistungen</a>
+      <a href="#leistungen" class="btn-primary">Unsere Leistungen</a>
       <a href="#kontakt" class="btn-ghost">Kontakt aufnehmen</a>
     </div>
   </div>
@@ -830,7 +859,6 @@
     <span class="ticker-item">Glasversiegelung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Innenraumreinigung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Scheinwerfer Aufbereitung</span><span class="ticker-sep"></span>
-    <!-- duplicate for seamless loop -->
     <span class="ticker-item">PDR Dellenentfernung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Chrom-Delete</span><span class="ticker-sep"></span>
     <span class="ticker-item">Keramikbeschichtung</span><span class="ticker-sep"></span>
@@ -886,7 +914,6 @@
 
   <div class="services-grid">
 
-    <!-- 01 -->
     <div class="service-card reveal">
       <span class="s-num">01</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
@@ -899,12 +926,11 @@
       <p>Lackschadenfreie Entfernung von Dellen und Beulen — ohne Neulackierung, ohne Spachtel.</p>
     </div>
 
-    <!-- 02 -->
     <div class="service-card reveal">
       <span class="s-num">02</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
         <rect x="6" y="12" width="14" height="20" rx="2"/>
-        <rect x="24" y="12" width="14" height="20" rx="2" fill="rgba(201,168,76,0.1)"/>
+        <rect x="24" y="12" width="14" height="20" rx="2" fill="rgba(255,255,255,0.08)"/>
         <path d="M20,22 L24,22"/>
         <circle cx="13" cy="22" r="3"/>
         <circle cx="31" cy="22" r="3" fill="currentColor" stroke="none"/>
@@ -913,20 +939,18 @@
       <p>Chrom-Delete in Schwarz (glänzend oder matt) für Leisten, Grill, Embleme und Spiegelkappen.</p>
     </div>
 
-    <!-- 03 -->
     <div class="service-card reveal">
       <span class="s-num">03</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
         <rect x="6" y="10" width="32" height="24" rx="2"/>
         <path d="M6,10 L38,34" stroke-opacity=".25"/>
-        <circle cx="32" cy="13" r="5" fill="rgba(201,168,76,0.15)" stroke="currentColor"/>
+        <circle cx="32" cy="13" r="5" fill="rgba(255,255,255,0.1)" stroke="currentColor"/>
         <path d="M30,13 L34,13 M32,11 L32,15"/>
       </svg>
       <h3>Scheibentönung</h3>
       <p>Professionelle Folientönung für Seiten- und Heckscheiben — Sichtschutz, Wärme- und UV-Schutz.</p>
     </div>
 
-    <!-- 04 -->
     <div class="service-card reveal">
       <span class="s-num">04</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
@@ -939,7 +963,6 @@
       <p>Intensive Felgen- und Radwäsche — Bremsstaubreste und hartnäckige Ablagerungen vollständig entfernt.</p>
     </div>
 
-    <!-- 05 -->
     <div class="service-card reveal">
       <span class="s-num">05</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
@@ -952,7 +975,6 @@
       <p>Maschinelle Politur und vollständige Außenaufbereitung für strahlenden Hochglanz.</p>
     </div>
 
-    <!-- 06 -->
     <div class="service-card reveal">
       <span class="s-num">06</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
@@ -965,48 +987,44 @@
       <p>Gezielte Kratzerentfernung und Lackaufbereitung für ein makelloses Fahrzeugbild.</p>
     </div>
 
-    <!-- 07 -->
     <div class="service-card reveal">
       <span class="s-num">07</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
         <path d="M22,6 L38,16 L38,34 L22,40 L6,34 L6,16 Z"/>
         <path d="M22,13 L32,19 L32,31 L22,36 L12,31 L12,19 Z" stroke-dasharray="3 3" stroke-opacity=".4"/>
-        <circle cx="22" cy="25" r="4" fill="rgba(201,168,76,0.15)"/>
+        <circle cx="22" cy="25" r="4" fill="rgba(255,255,255,0.1)" stroke="none"/>
       </svg>
       <h3>Keramikbeschichtung</h3>
       <p>Langlebiger Schutzfilm durch Keramikbeschichtung — Hydrophobieeffekt, UV-Schutz und leichte Reinigung.</p>
     </div>
 
-    <!-- 08 -->
     <div class="service-card reveal">
       <span class="s-num">08</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
         <rect x="4" y="12" width="36" height="22" rx="2"/>
         <path d="M4,12 L22,24 L40,12"/>
-        <circle cx="30" cy="18" r="5" fill="rgba(201,168,76,0.12)" stroke="currentColor"/>
+        <circle cx="30" cy="18" r="5" fill="rgba(255,255,255,0.09)" stroke="currentColor"/>
         <path d="M28,18 L32,18 M30,16 L30,20"/>
       </svg>
       <h3>Scheiben Polieren</h3>
       <p>Polieren von Frontscheibe, Seiten- und Heckscheibe — klare Sicht, keine Schleier oder Kratzer.</p>
     </div>
 
-    <!-- 09 -->
     <div class="service-card reveal">
       <span class="s-num">09</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
         <path d="M8,24 Q8,12 18,10 L26,10 Q36,12 36,24 Q36,30 26,32 L26,38 L18,38 L18,32 Q8,30 8,24 Z"/>
         <path d="M14,22 L30,18 M14,25 L26,23" stroke-opacity=".4"/>
-        <circle cx="22" cy="24" r="3" fill="rgba(201,168,76,0.25)" stroke="none"/>
+        <circle cx="22" cy="24" r="3" fill="rgba(255,255,255,0.18)" stroke="none"/>
       </svg>
       <h3>Scheinwerfer Aufbereitung</h3>
       <p>Aufbereitung vergilbter und matter Scheinwerfer mit abschließender Schutzbeschichtung.</p>
     </div>
 
-    <!-- 10 -->
     <div class="service-card reveal">
       <span class="s-num">10</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-        <path d="M22,8 L27,22 Q33,29 33,35 Q33,42 22,42 Q11,42 11,35 Q11,29 17,22 Z" fill="rgba(201,168,76,0.06)"/>
+        <path d="M22,8 L27,22 Q33,29 33,35 Q33,42 22,42 Q11,42 11,35 Q11,29 17,22 Z" fill="rgba(255,255,255,0.04)"/>
         <path d="M17,33 Q20,28 25,30"/>
         <path d="M15,37 Q20,32 27,35" stroke-opacity=".45"/>
       </svg>
@@ -1014,17 +1032,15 @@
       <p>Hydrophobe Versiegelung für optimale Wasserabweisung — der klassische Regenabweiser-Effekt.</p>
     </div>
 
-    <!-- 11 -->
     <div class="service-card reveal">
       <span class="s-num">11</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
         <rect x="6" y="10" width="32" height="28" rx="1"/>
-        <path d="M12" y1="10" x2="12" y2="8"/>
         <path d="M12,10 L12,8 M32,10 L32,8"/>
         <path d="M10,20 L34,20"/>
         <path d="M10,27 L28,27"/>
         <path d="M10,34 L22,34"/>
-        <circle cx="34" cy="32" r="7" fill="rgba(201,168,76,0.08)" stroke="currentColor"/>
+        <circle cx="34" cy="32" r="7" fill="rgba(255,255,255,0.06)" stroke="currentColor"/>
         <path d="M31,32 L33,34 L37,29" stroke-width="1.5"/>
       </svg>
       <h3>Innenraumreinigung</h3>
@@ -1094,34 +1110,37 @@
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-logo">STUDIO <span>HOLOVKO</span></div>
+  <div class="footer-logo">
+    <img src="public/Screenshot%202026-06-11%20142334.png" alt="Autoaufbereitung Studio Holovko">
+  </div>
   <div class="footer-copy">© 2025 Autoaufbereitung Studio Holovko · Essen</div>
 </footer>
 
 <script>
-  // ── Nav scroll ──
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 48);
   }, { passive: true });
 
-  // ── Mobile nav ──
   const toggle = document.getElementById('navToggle');
   function toggleNav() {
     toggle.classList.toggle('open');
     document.getElementById('navLinks').classList.toggle('open');
+    document.body.style.overflow = toggle.classList.contains('open') ? 'hidden' : '';
   }
   function closeNav() {
     toggle.classList.remove('open');
     document.getElementById('navLinks').classList.remove('open');
+    document.body.style.overflow = '';
   }
 
-  // ── Scroll reveal ──
-  const revealEls = document.querySelectorAll('.reveal');
+  // Close mobile nav on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-  // Stagger cards within the same grid row
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
   document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
-    card.style.transitionDelay = `${(i % 3) * 0.11}s`;
+    card.style.transitionDelay = `${(i % 3) * 0.1}s`;
   });
 
   const observer = new IntersectionObserver((entries) => {
