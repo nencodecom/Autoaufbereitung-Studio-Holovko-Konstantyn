@@ -588,43 +588,44 @@ nav.nav-solid {
 
 /* ─── VIDEO SECTION ─── */
 .video-section {
-  padding: 0 64px 130px;
+  padding: 80px 64px 130px;
   background: var(--bg-2);
-  display: flex;
-  justify-content: center;
+}
+.video-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 80px;
+  align-items: center;
+}
+.video-text {
+  max-width: 520px;
+}
+.video-text-h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(46px, 6vw, 80px);
+  line-height: .93;
+  margin-bottom: 32px;
+}
+.video-text-h2 em { color: rgba(255,255,255,.45); font-style: normal; }
+.video-text-p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 16px;
 }
 .video-section-inner {
   position: relative;
   overflow: hidden;
   background: #000;
   border: 1px solid var(--border);
-  width: 100%;
-  max-width: 520px;
+  width: 380px;
+  flex-shrink: 0;
 }
 .video-section video {
   width: 100%;
   display: block;
-}
-.video-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 32px 44px;
-  background: linear-gradient(to top, rgba(8,8,8,.88) 0%, transparent 100%);
-}
-.video-label strong {
-  display: block;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 2px;
-  margin-bottom: 4px;
-}
-.video-label span {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: var(--muted);
 }
 
 /* ─── LEISTUNGEN ─── */
@@ -933,6 +934,7 @@ footer {
   .page-hero { padding: 140px 40px 80px; }
   #ueber-uns, #galerie, .galerie-section, #leistungen, .leistungen-section,
   .leistungen-preview, #kontakt, .kontakt-section, .video-section { padding-left: 40px; padding-right: 40px; }
+  .video-section-inner { width: 320px; }
   footer { padding-left: 40px; padding-right: 40px; }
   .usp-grid { grid-template-columns: 1fr; gap: 48px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -974,8 +976,10 @@ footer {
   .page-hero { padding: 120px 20px 64px; }
   #ueber-uns, #galerie, .galerie-section, #leistungen, .leistungen-section,
   .leistungen-preview, #kontakt, .kontakt-section { padding: 80px 20px; }
-  .video-section { padding: 0 20px 80px; }
-  .video-section-inner { max-width: 100%; }
+  .video-section { padding: 60px 20px 80px; }
+  .video-layout { grid-template-columns: 1fr; gap: 40px; }
+  .video-text { max-width: none; }
+  .video-section-inner { width: 100%; max-width: 420px; margin: 0 auto; }
   .section-label { margin-bottom: 40px; font-size: 9px; }
 
   .gallery-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
