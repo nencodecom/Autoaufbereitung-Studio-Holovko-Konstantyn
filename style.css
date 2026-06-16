@@ -590,18 +590,20 @@ nav.nav-solid {
 .video-section {
   padding: 0 64px 130px;
   background: var(--bg-2);
+  display: flex;
+  justify-content: center;
 }
 .video-section-inner {
   position: relative;
   overflow: hidden;
   background: #000;
   border: 1px solid var(--border);
+  width: 100%;
+  max-width: 520px;
 }
 .video-section video {
   width: 100%;
   display: block;
-  max-height: 72vh;
-  object-fit: cover;
 }
 .video-label {
   position: absolute;
@@ -973,6 +975,7 @@ footer {
   #ueber-uns, #galerie, .galerie-section, #leistungen, .leistungen-section,
   .leistungen-preview, #kontakt, .kontakt-section { padding: 80px 20px; }
   .video-section { padding: 0 20px 80px; }
+  .video-section-inner { max-width: 100%; }
   .section-label { margin-bottom: 40px; font-size: 9px; }
 
   .gallery-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
