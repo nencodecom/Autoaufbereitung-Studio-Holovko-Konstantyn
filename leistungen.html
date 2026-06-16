@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leistungen — Studio Holovko Autoaufbereitung Essen</title>
+  <meta name="description" content="Alle Leistungen von Studio Holovko: PDR Dellenentfernung, Anti-Chrom Folierung, Keramikbeschichtung, Scheibentönung, Autopolitur und mehr in Essen.">
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="public/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="public/apple-touch-icon.png">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav" class="nav-solid">
+  <a href="index.html" class="nav-logo">
+    <img src="public/Screenshot%202026-06-11%20142334.png" alt="Autoaufbereitung Studio Holovko">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" onclick="closeNav()">Home</a></li>
+    <li><a href="leistungen.html" class="active" onclick="closeNav()">Leistungen</a></li>
+    <li><a href="galerie.html" onclick="closeNav()">Galerie</a></li>
+    <li><a href="kontakt.html" onclick="closeNav()">Kontakt</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── PAGE HERO ─── -->
+<header class="page-hero">
+  <div class="page-hero-eyebrow">Was wir anbieten</div>
+  <h1 class="page-hero-title">
+    UNSERE<br>
+    <em>LEISTUNGEN</em>
+  </h1>
+  <p class="page-hero-sub">11 Leistungen für ein Fahrzeug auf höchstem Niveau — professionell, präzise, ohne Kompromisse.</p>
+</header>
+
+<!-- ─── VIDEO: STUDIO IN AKTION ─── -->
+<div class="video-section" style="padding-top: 80px;">
+  <div class="video-section-inner">
+    <video autoplay muted loop playsinline preload="metadata" poster="public/studio-hero-poster.jpg">
+      <source src="public/studio-hero.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">
+      <strong>STUDIO IN AKTION</strong>
+      <span>Professionelle Aufbereitung unter Hexagon-LED-Lichtanlage in Essen</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ALLE LEISTUNGEN ─── -->
+<section class="leistungen-section">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">Vollständige Übersicht</div>
+      <div class="services-h2">ALLE<br><em>SERVICES</em></div>
+    </div>
+    <div class="services-big-num">11</div>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <span class="s-num">01</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M6,34 Q10,20 22,18 Q34,20 38,34"/>
+        <path d="M12,30 Q16,22 22,21 Q28,22 32,30"/>
+        <circle cx="22" cy="26" r="3" fill="currentColor" stroke="none"/>
+        <path d="M4,38 L40,38"/>
+      </svg>
+      <h3>Dellenentfernung (PDR)</h3>
+      <p>Lackschadenfreie Entfernung von Dellen und Beulen — ohne Neulackierung, ohne Spachtel.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">02</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="6" y="12" width="14" height="20" rx="2"/>
+        <rect x="24" y="12" width="14" height="20" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <path d="M20,22 L24,22"/>
+        <circle cx="13" cy="22" r="3"/>
+        <circle cx="31" cy="22" r="3" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3>Anti-Chrom Folierung</h3>
+      <p>Chrom-Delete in Schwarz (glänzend oder matt) für Leisten, Grill, Embleme und Spiegelkappen.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">03</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="6" y="10" width="32" height="24" rx="2"/>
+        <path d="M6,10 L38,34" stroke-opacity=".25"/>
+        <circle cx="32" cy="13" r="5" fill="rgba(255,255,255,0.1)" stroke="currentColor"/>
+        <path d="M30,13 L34,13 M32,11 L32,15"/>
+      </svg>
+      <h3>Scheibentönung</h3>
+      <p>Professionelle Folientönung für Seiten- und Heckscheiben — Sichtschutz, Wärme- und UV-Schutz.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">04</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <circle cx="22" cy="22" r="16"/>
+        <circle cx="22" cy="22" r="9"/>
+        <circle cx="22" cy="22" r="3" fill="currentColor" stroke="none"/>
+        <path d="M6,22 L13,22 M31,22 L38,22 M22,6 L22,13 M22,31 L22,38"/>
+      </svg>
+      <h3>Felgenreinigung &amp; Radwäsche</h3>
+      <p>Intensive Felgen- und Radwäsche — Bremsstaubreste und hartnäckige Ablagerungen vollständig entfernt.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">05</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M8,30 Q12,14 22,12 Q32,14 36,30"/>
+        <path d="M12,34 L32,34"/>
+        <path d="M15,20 L17,22 M27,17 L29,19 M22,14 L22,18"/>
+        <path d="M14,38 L30,38"/>
+      </svg>
+      <h3>Autopolitur &amp; Aufbereitung</h3>
+      <p>Maschinelle Politur und vollständige Außenaufbereitung für strahlenden Hochglanz.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">06</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M8,36 L36,8"/>
+        <path d="M13,31 L31,13" stroke-dasharray="2 3" stroke-opacity=".4"/>
+        <circle cx="18" cy="26" r="6"/>
+        <path d="M14,22 L22,30"/>
+      </svg>
+      <h3>Lokale Kratzerentfernung</h3>
+      <p>Gezielte Kratzerentfernung und Lackaufbereitung für ein makelloses Fahrzeugbild.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">07</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M22,6 L38,16 L38,34 L22,40 L6,34 L6,16 Z"/>
+        <path d="M22,13 L32,19 L32,31 L22,36 L12,31 L12,19 Z" stroke-dasharray="3 3" stroke-opacity=".4"/>
+        <circle cx="22" cy="25" r="4" fill="rgba(255,255,255,0.1)" stroke="none"/>
+      </svg>
+      <h3>Keramikbeschichtung</h3>
+      <p>Langlebiger Schutzfilm durch Keramikbeschichtung — Hydrophobieeffekt, UV-Schutz und leichte Reinigung.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">08</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="4" y="12" width="36" height="22" rx="2"/>
+        <path d="M4,12 L22,24 L40,12"/>
+        <circle cx="30" cy="18" r="5" fill="rgba(255,255,255,0.09)" stroke="currentColor"/>
+        <path d="M28,18 L32,18 M30,16 L30,20"/>
+      </svg>
+      <h3>Scheiben Polieren</h3>
+      <p>Polieren von Frontscheibe, Seiten- und Heckscheibe — klare Sicht, keine Schleier oder Kratzer.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">09</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M8,24 Q8,12 18,10 L26,10 Q36,12 36,24 Q36,30 26,32 L26,38 L18,38 L18,32 Q8,30 8,24 Z"/>
+        <path d="M14,22 L30,18 M14,25 L26,23" stroke-opacity=".4"/>
+        <circle cx="22" cy="24" r="3" fill="rgba(255,255,255,0.18)" stroke="none"/>
+      </svg>
+      <h3>Scheinwerfer Aufbereitung</h3>
+      <p>Aufbereitung vergilbter und matter Scheinwerfer mit abschließender Schutzbeschichtung.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">10</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M22,8 L27,22 Q33,29 33,35 Q33,42 22,42 Q11,42 11,35 Q11,29 17,22 Z" fill="rgba(255,255,255,0.04)"/>
+        <path d="M17,33 Q20,28 25,30"/>
+        <path d="M15,37 Q20,32 27,35" stroke-opacity=".45"/>
+      </svg>
+      <h3>Glasversiegelung</h3>
+      <p>Hydrophobe Versiegelung für optimale Wasserabweisung — der klassische Regenabweiser-Effekt.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="s-num">11</span>
+      <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <rect x="6" y="10" width="32" height="28" rx="1"/>
+        <path d="M12,10 L12,8 M32,10 L32,8"/>
+        <path d="M10,20 L34,20"/>
+        <path d="M10,27 L28,27"/>
+        <path d="M10,34 L22,34"/>
+        <circle cx="34" cy="32" r="7" fill="rgba(255,255,255,0.06)" stroke="currentColor"/>
+        <path d="M31,32 L33,34 L37,29" stroke-width="1.5"/>
+      </svg>
+      <h3>Innenraumreinigung</h3>
+      <p>Professionelle Innenreinigung jeder Schwierigkeit — Sitze, Dachhimmel, Teppiche und Armaturenbrett.</p>
+    </div>
+
+  </div>
+
+  <div class="section-cta" style="margin-top: 64px;">
+    <a href="kontakt.html" class="btn-primary">Termin anfragen</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">
+    <img src="public/Screenshot%202026-06-11%20142334.png" alt="Autoaufbereitung Studio Holovko">
+  </div>
+  <ul class="footer-links">
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Autoaufbereitung Studio Holovko · Essen</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 48);
+  }, { passive: true });
+
+  const toggle = document.getElementById('navToggle');
+  function toggleNav() {
+    toggle.classList.toggle('open');
+    document.getElementById('navLinks').classList.toggle('open');
+    document.body.style.overflow = toggle.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeNav() {
+    toggle.classList.remove('open');
+    document.getElementById('navLinks').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
+    card.style.transitionDelay = `${(i % 3) * 0.1}s`;
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
