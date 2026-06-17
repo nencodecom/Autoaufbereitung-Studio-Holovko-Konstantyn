@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -27,6 +27,14 @@
     <li><a href="galerie.html" onclick="closeNav()">Galerie</a></li>
     <li><a href="kontakt.html" onclick="closeNav()">Kontakt</a></li>
   </ul>
+  <div class="nav-social">
+    <a href="https://www.instagram.com/essen.autoaufbereitung" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@autoaufbereitung.essen" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.26 8.26 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+    </a>
+  </div>
   <div class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
   </div>
@@ -68,21 +76,21 @@
 <div class="ticker-strip" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">PDR Dellenentfernung</span><span class="ticker-sep"></span>
-    <span class="ticker-item">Chrom-Delete</span><span class="ticker-sep"></span>
     <span class="ticker-item">Keramikbeschichtung</span><span class="ticker-sep"></span>
-    <span class="ticker-item">Scheibentönung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Kratzerentfernung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Autopolitur</span><span class="ticker-sep"></span>
     <span class="ticker-item">Glasversiegelung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Innenraumreinigung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Scheinwerfer Aufbereitung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Felgenreinigung</span><span class="ticker-sep"></span>
     <span class="ticker-item">PDR Dellenentfernung</span><span class="ticker-sep"></span>
-    <span class="ticker-item">Chrom-Delete</span><span class="ticker-sep"></span>
     <span class="ticker-item">Keramikbeschichtung</span><span class="ticker-sep"></span>
-    <span class="ticker-item">Scheibentönung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Kratzerentfernung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Autopolitur</span><span class="ticker-sep"></span>
     <span class="ticker-item">Glasversiegelung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Innenraumreinigung</span><span class="ticker-sep"></span>
     <span class="ticker-item">Scheinwerfer Aufbereitung</span><span class="ticker-sep"></span>
+    <span class="ticker-item">Felgenreinigung</span><span class="ticker-sep"></span>
   </div>
 </div>
 
@@ -94,25 +102,25 @@
     <div class="usp-text reveal">
       <h2>PRÄZISION<br>DIE MAN <em>SIEHT.</em></h2>
       <p>Wir behandeln jedes Fahrzeug mit der Sorgfalt, die es verdient. Professionelle Werkzeuge, bewährte Techniken und ein uncompromissliches Auge für Details — das ist unser Versprechen.</p>
-      <p>Vom Chrom-Delete über Keramikbeschichtung bis zur vollständigen Innenraumreinigung: Wir bringen Ihr Fahrzeug auf ein neues Niveau — ohne Schäden, ohne Kompromisse.</p>
+      <p>Von der Dellenentfernung über Keramikbeschichtung bis zur vollständigen Innenraumreinigung: Wir bringen Ihr Fahrzeug auf ein neues Niveau — ohne Schäden, ohne Kompromisse.</p>
       <div class="pill-row">
         <span class="pill">Saubere Verarbeitung</span>
         <span class="pill">Keine Originalschäden</span>
         <span class="pill">Langlebige Ergebnisse</span>
-        <span class="pill">Rückstandslos entfernbar</span>
         <span class="pill">UV-Schutz</span>
+        <span class="pill">PDR zertifiziert</span>
       </div>
     </div>
 
     <div class="feature-card reveal">
       <div class="feature-badge">Highlight-Leistung</div>
-      <h3>ANTI-CHROM<br>FOLIERUNG</h3>
+      <h3>KERAMIK-<br>BESCHICHTUNG</h3>
       <div class="chrome-split">
-        <div class="chrome-before">Vorher — Chrom</div>
+        <div class="chrome-before" style="background:linear-gradient(135deg,#3a3a3a,#5a5a5a,#2a2a2a);color:rgba(255,255,255,.7);">Ohne Schutz</div>
         <div class="chrome-arrow">→</div>
-        <div class="chrome-after">Nachher — Schwarz</div>
+        <div class="chrome-after" style="background:linear-gradient(135deg,#0a1628,#1a3a6a,#0a1628);border:1px solid rgba(100,160,255,.25);">SiO₂ Versiegelt</div>
       </div>
-      <p>Wir folieren Chromteile Ihres Fahrzeugs professionell in Schwarz — glänzend oder matt. Geeignet für Fensterleisten, Kühlergrill, Zierleisten, Embleme und Spiegelkappen. Schützt vor Kratzern, Witterung und UV-Strahlung. Bei Bedarf rückstandslos entfernbar.</p>
+      <p>Langlebiger Keramikschutz für Ihren Lack — extremer Hydrophobieeffekt, UV-Schutz und stark vereinfachte Reinigung. Schützt dauerhaft vor Umwelteinflüssen, Schmutz und feinen Kratzern.</p>
     </div>
 
   </div>
@@ -125,7 +133,7 @@
       <div class="section-label">Was wir anbieten</div>
       <div class="services-h2">UNSERE<br><em>LEISTUNGEN</em></div>
     </div>
-    <div class="services-big-num">11</div>
+    <div class="services-big-num">9</div>
   </div>
 
   <div class="services-grid">
@@ -154,22 +162,24 @@
     </div>
 
     <div class="service-card reveal">
-      <span class="s-num">02</span>
+      <span class="s-num">09</span>
       <svg class="s-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-        <rect x="6" y="12" width="14" height="20" rx="2"/>
-        <rect x="24" y="12" width="14" height="20" rx="2" fill="rgba(255,255,255,0.08)"/>
-        <path d="M20,22 L24,22"/>
-        <circle cx="13" cy="22" r="3"/>
-        <circle cx="31" cy="22" r="3" fill="currentColor" stroke="none"/>
+        <rect x="6" y="10" width="32" height="28" rx="1"/>
+        <path d="M12,10 L12,8 M32,10 L32,8"/>
+        <path d="M10,20 L34,20"/>
+        <path d="M10,27 L28,27"/>
+        <path d="M10,34 L22,34"/>
+        <circle cx="34" cy="32" r="7" fill="rgba(255,255,255,0.06)" stroke="currentColor"/>
+        <path d="M31,32 L33,34 L37,29" stroke-width="1.5"/>
       </svg>
-      <h3>Anti-Chrom Folierung</h3>
-      <p>Chrom-Delete in Schwarz (glänzend oder matt) für Leisten, Grill, Embleme und Spiegelkappen.</p>
+      <h3>Innenraumreinigung</h3>
+      <p>Professionelle Innenreinigung — Sitze, Dachhimmel, Teppiche und Armaturenbrett.</p>
     </div>
 
   </div>
 
   <div class="section-cta" style="margin-top: 52px;">
-    <a href="leistungen.html" class="btn-outline">Alle 11 Leistungen ansehen &nbsp;→</a>
+    <a href="leistungen.html" class="btn-outline">Alle 9 Leistungen ansehen &nbsp;→</a>
   </div>
 </section>
 
@@ -205,6 +215,63 @@
   </div>
 </section>
 
+<!-- ─── WIE WIR ARBEITEN ─── -->
+<section class="wwa-section">
+  <div class="section-label reveal">Studio Einblicke</div>
+  <div class="wwa-header">
+    <div class="reveal">
+      <h2 class="wwa-title">WIE WIR<br><em>ARBEITEN</em></h2>
+    </div>
+    <p class="wwa-intro reveal">Echte Einblicke in unsere tägliche Arbeit — von der Detailpolitur bis zur Folierung.</p>
+  </div>
+
+  <div class="wwa-track-wrap" id="wwaTrack">
+    <div class="wwa-track">
+      <div class="wwa-item">
+        <video autoplay muted loop playsinline src="public/WhatsApp%20Video%202026-06-17%20at%2015.16.36.mp4"></video>
+        <div class="wwa-cap">Politur &amp; Pflege</div>
+      </div>
+      <div class="wwa-item">
+        <video autoplay muted loop playsinline src="public/WhatsApp%20Video%202026-06-17%20at%2015.16.36%20(2).mp4"></video>
+        <div class="wwa-cap">Detailarbeit</div>
+      </div>
+      <div class="wwa-item">
+        <video autoplay muted loop playsinline src="public/WhatsApp%20Video%202026-06-17%20at%2015.16.40.mp4"></video>
+        <div class="wwa-cap">Folierung</div>
+      </div>
+      <div class="wwa-item">
+        <video autoplay muted loop playsinline src="public/WhatsApp%20Video%202026-06-17%20at%2015.16.41.mp4"></video>
+        <div class="wwa-cap">Finish &amp; Kontrolle</div>
+      </div>
+      <div class="wwa-item">
+        <video autoplay muted loop playsinline src="public/WhatsApp%20Video%202026-06-17%20at%2015.16.44.mp4"></video>
+        <div class="wwa-cap">Im Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ZERTIFIKAT & QR ─── -->
+<section class="zert-section">
+  <div class="section-label reveal">Qualifikationen</div>
+  <div class="zert-grid">
+    <div class="zert-card reveal">
+      <div class="zert-badge">Zertifiziert</div>
+      <div class="cert-img-outer">
+        <img src="public/d1d665f7-39e3-4934-b556-736c3f67b1a9.jpg" alt="XPEL Authorized Installer Zertifikat — Holovko Kostiantyn">
+      </div>
+      <p class="zert-label">XPEL Prime Window Film — Authorized Installer · Holovko Kostiantyn</p>
+    </div>
+    <div class="zert-card reveal">
+      <div class="zert-badge">Schnellkontakt</div>
+      <div class="qr-img-outer">
+        <img src="public/e7fe9566-610d-431d-a821-cc61a448321f.jpg" alt="Autoaufbereitung Studio Holovko — QR Kontakt">
+      </div>
+      <p class="zert-label">Jetzt QR-Code scannen — schnelle Terminvereinbarung via WhatsApp</p>
+    </div>
+  </div>
+</section>
+
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-logo">
@@ -215,6 +282,14 @@
     <li><a href="galerie.html">Galerie</a></li>
     <li><a href="kontakt.html">Kontakt</a></li>
   </ul>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/essen.autoaufbereitung" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@autoaufbereitung.essen" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.26 8.26 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+    </a>
+  </div>
   <div class="footer-copy">© 2025 Autoaufbereitung Studio Holovko · Essen</div>
 </footer>
 
@@ -236,6 +311,23 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+  // Drag-to-scroll video gallery
+  const wwaWrap = document.getElementById('wwaTrack');
+  if (wwaWrap) {
+    let isDown = false, startX, scrollLeft;
+    wwaWrap.addEventListener('mousedown', e => {
+      isDown = true; wwaWrap.classList.add('dragging');
+      startX = e.pageX - wwaWrap.offsetLeft; scrollLeft = wwaWrap.scrollLeft;
+    });
+    wwaWrap.addEventListener('mouseleave', () => { isDown = false; wwaWrap.classList.remove('dragging'); });
+    wwaWrap.addEventListener('mouseup', () => { isDown = false; wwaWrap.classList.remove('dragging'); });
+    wwaWrap.addEventListener('mousemove', e => {
+      if (!isDown) return; e.preventDefault();
+      const x = e.pageX - wwaWrap.offsetLeft;
+      wwaWrap.scrollLeft = scrollLeft - (x - startX) * 1.4;
+    });
+  }
 
   const revealEls = document.querySelectorAll('.reveal');
   document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
