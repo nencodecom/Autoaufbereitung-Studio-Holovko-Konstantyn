@@ -1058,7 +1058,7 @@ footer {
   height: 133.33%;
   left: 12.5%;
   top: -16.67%;
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
   transform-origin: center center;
 }
 
