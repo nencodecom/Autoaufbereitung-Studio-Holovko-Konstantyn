@@ -1047,18 +1047,13 @@ footer {
 }
 
 .cert-img-outer {
-  position: relative;
-  aspect-ratio: 4/3;
   overflow: hidden;
   background: #fff;
 }
 .cert-img-outer img {
-  position: absolute;
-  height: 133%;
-  width: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .qr-img-outer {
