@@ -251,37 +251,36 @@
   </div>
 </section>
 
-<!-- ─── ZERTIFIKAT & QR ─── -->
+<!-- ─── ZERTIFIKATE ─── -->
 <section class="zert-section">
   <div class="section-label reveal">Qualifikationen</div>
-  <div class="zert-grid">
-    <div class="zert-card reveal">
-      <div class="zert-badge">Zertifiziert</div>
-      <div class="cert-img-outer">
-        <img src="public/d1d665f7-39e3-4934-b556-736c3f67b1a9.jpg" alt="XPEL Authorized Installer Zertifikat — Holovko Kostiantyn">
+  <div class="cert-box reveal">
+    <div class="cert-carousel" id="certCarousel">
+      <div class="cert-track" id="certTrack">
+        <div class="cert-slide">
+          <div class="cert-img-outer">
+            <img src="public/d1d665f7-39e3-4934-b556-736c3f67b1a9.jpg" alt="XPEL Authorized Installer Zertifikat — Holovko Kostiantyn">
+          </div>
+          <p class="zert-label">XPEL Prime Window Film — Authorized Installer · Holovko Kostiantyn</p>
+        </div>
+        <div class="cert-slide">
+          <div class="cert-img-outer">
+            <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19.jpeg" alt="Zertifikat — Holovko Kostiantyn">
+          </div>
+          <p class="zert-label">Zertifikat — Holovko Kostiantyn</p>
+        </div>
+        <div class="cert-slide">
+          <div class="cert-img-outer">
+            <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19%20(1).jpeg" alt="Zertifikat — Holovko Kostiantyn">
+          </div>
+          <p class="zert-label">Zertifikat — Holovko Kostiantyn</p>
+        </div>
       </div>
-      <p class="zert-label">XPEL Prime Window Film — Authorized Installer · Holovko Kostiantyn</p>
     </div>
-    <div class="zert-card reveal">
-      <div class="zert-badge">Zertifiziert</div>
-      <div class="cert-img-outer">
-        <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19.jpeg" alt="Zertifikat — Holovko Kostiantyn">
-      </div>
-      <p class="zert-label">Zertifikat — Holovko Kostiantyn</p>
-    </div>
-    <div class="zert-card reveal">
-      <div class="zert-badge">Zertifiziert</div>
-      <div class="cert-img-outer">
-        <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19%20(1).jpeg" alt="Zertifikat — Holovko Kostiantyn">
-      </div>
-      <p class="zert-label">Zertifikat — Holovko Kostiantyn</p>
-    </div>
-    <div class="zert-card reveal">
-      <div class="zert-badge">Schnellkontakt</div>
-      <div class="qr-img-outer">
-        <img src="public/e7fe9566-610d-431d-a821-cc61a448321f.jpg" alt="Autoaufbereitung Studio Holovko — QR Kontakt">
-      </div>
-      <p class="zert-label">Jetzt QR-Code scannen — schnelle Terminvereinbarung via WhatsApp</p>
+    <div class="cert-controls">
+      <button class="cert-btn" id="certPrev" aria-label="Zurück">&#8592;</button>
+      <div class="cert-dots" id="certDots"></div>
+      <button class="cert-btn" id="certNext" aria-label="Weiter">&#8594;</button>
     </div>
   </div>
 </section>
@@ -342,6 +341,36 @@
       wwaWrap.scrollLeft = scrollLeft - (x - startX) * 1.4;
     });
   }
+
+  // Certificate carousel
+  (function() {
+    const track = document.getElementById('certTrack');
+    const dotsEl = document.getElementById('certDots');
+    if (!track) return;
+    const slides = track.querySelectorAll('.cert-slide');
+    let current = 0;
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'cert-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Folie ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    });
+    function goTo(n) {
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsEl.querySelectorAll('.cert-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    document.getElementById('certPrev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('certNext').addEventListener('click', () => goTo(current + 1));
+    // Touch swipe
+    let tx = 0;
+    track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+    }, { passive: true });
+  })();
 
   const revealEls = document.querySelectorAll('.reveal');
   document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {

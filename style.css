@@ -1059,48 +1059,88 @@ footer {
 }
 .zert-section .section-label { margin-bottom: 40px; }
 
-.zert-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-.zert-card {
+.cert-box {
   background: var(--bg-3);
   border: 1px solid var(--border);
-  padding: 36px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.cert-carousel {
+  overflow: hidden;
+}
+
+.cert-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-slide {
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-.zert-badge {
-  display: inline-block;
-  background: var(--text);
-  color: #060606;
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 5px 14px;
-  align-self: flex-start;
 }
 
 .cert-img-outer {
   overflow: hidden;
   background: #fff;
+  max-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .cert-img-outer img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 
-.qr-img-outer {
-  overflow: hidden;
-  border: 1px solid var(--border);
+.cert-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
-.qr-img-outer img {
-  width: 100%;
-  display: block;
+
+.cert-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cert-btn:hover {
+  background: var(--text);
+  color: #060606;
+  border-color: var(--text);
+}
+
+.cert-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.cert-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.cert-dot.active {
+  background: var(--text);
+  transform: scale(1.4);
 }
 
 .zert-label {
@@ -1110,7 +1150,6 @@ footer {
   line-height: 1.6;
   color: var(--muted);
   font-weight: 300;
-  margin-top: auto;
 }
 
 /* ─── ANIMATIONS ─── */
@@ -1209,8 +1248,7 @@ footer {
   .wwa-item { width: 200px; }
 
   .zert-section { padding: 40px 20px 80px; }
-  .zert-grid { grid-template-columns: 1fr; }
-  .zert-card { padding: 24px; }
+  .cert-box { padding: 24px; }
 
   .gallery-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
   .gallery-intro { text-align: left; max-width: none; }
