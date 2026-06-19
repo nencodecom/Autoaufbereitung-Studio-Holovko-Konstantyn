@@ -255,32 +255,28 @@
 <section class="zert-section">
   <div class="section-label reveal">Qualifikationen</div>
   <div class="cert-box reveal">
-    <div class="cert-carousel" id="certCarousel">
+    <div class="cert-viewport">
       <div class="cert-track" id="certTrack">
         <div class="cert-slide">
-          <div class="cert-img-outer">
-            <img src="public/d1d665f7-39e3-4934-b556-736c3f67b1a9.jpg" alt="XPEL Authorized Installer Zertifikat — Holovko Kostiantyn">
-          </div>
-          <p class="zert-label">XPEL Prime Window Film — Authorized Installer · Holovko Kostiantyn</p>
+          <img src="public/d1d665f7-39e3-4934-b556-736c3f67b1a9.jpg" alt="XPEL Authorized Installer Zertifikat">
         </div>
         <div class="cert-slide">
-          <div class="cert-img-outer">
-            <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19.jpeg" alt="Zertifikat — Holovko Kostiantyn">
-          </div>
-          <p class="zert-label">Zertifikat — Holovko Kostiantyn</p>
+          <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19.jpeg" alt="Zertifikat — Holovko Kostiantyn">
         </div>
         <div class="cert-slide">
-          <div class="cert-img-outer">
-            <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19%20(1).jpeg" alt="Zertifikat — Holovko Kostiantyn">
-          </div>
-          <p class="zert-label">Zertifikat — Holovko Kostiantyn</p>
+          <img src="public/WhatsApp%20Image%202026-06-18%20at%2013.22.19%20(1).jpeg" alt="Zertifikat — Holovko Kostiantyn">
         </div>
       </div>
+      <button class="cert-arrow cert-arrow--l" id="certPrev" aria-label="Zurück">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="cert-arrow cert-arrow--r" id="certNext" aria-label="Weiter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
     </div>
-    <div class="cert-controls">
-      <button class="cert-btn" id="certPrev" aria-label="Zurück">&#8592;</button>
+    <div class="cert-footer">
+      <p class="zert-label" id="certLabel">XPEL Prime Window Film — Authorized Installer · Holovko Kostiantyn</p>
       <div class="cert-dots" id="certDots"></div>
-      <button class="cert-btn" id="certNext" aria-label="Weiter">&#8594;</button>
     </div>
   </div>
 </section>
@@ -346,13 +342,19 @@
   (function() {
     const track = document.getElementById('certTrack');
     const dotsEl = document.getElementById('certDots');
+    const labelEl = document.getElementById('certLabel');
     if (!track) return;
     const slides = track.querySelectorAll('.cert-slide');
+    const labels = [
+      'XPEL Prime Window Film — Authorized Installer · Holovko Kostiantyn',
+      'Zertifikat — Holovko Kostiantyn',
+      'Zertifikat — Holovko Kostiantyn'
+    ];
     let current = 0;
     slides.forEach((_, i) => {
       const d = document.createElement('button');
       d.className = 'cert-dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Folie ' + (i + 1));
+      d.setAttribute('aria-label', 'Zertifikat ' + (i + 1));
       d.addEventListener('click', () => goTo(i));
       dotsEl.appendChild(d);
     });
@@ -360,10 +362,10 @@
       current = (n + slides.length) % slides.length;
       track.style.transform = `translateX(-${current * 100}%)`;
       dotsEl.querySelectorAll('.cert-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      if (labelEl) labelEl.textContent = labels[current];
     }
     document.getElementById('certPrev').addEventListener('click', () => goTo(current - 1));
     document.getElementById('certNext').addEventListener('click', () => goTo(current + 1));
-    // Touch swipe
     let tx = 0;
     track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
