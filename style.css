@@ -1280,3 +1280,43 @@ footer {
   .feature-card h3 { font-size: 30px; }
   .c-text span, .c-text a { font-size: 17px; }
 }
+
+/* ─── WHATSAPP FLOAT BUTTON ─── */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 300;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 0 rgba(37,211,102,.55);
+  transition: transform .3s ease, box-shadow .3s ease;
+  animation: wa-pulse 2.6s ease-out infinite;
+}
+.wa-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 34px rgba(0,0,0,.55);
+  animation-play-state: paused;
+}
+.wa-float svg { width: 34px; height: 34px; display: block; }
+
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 0 rgba(37,211,102,.5); }
+  70%  { box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 0 rgba(37,211,102,0); }
+}
+
+@media (max-width: 768px) {
+  .wa-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+  .wa-float svg { width: 30px; height: 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float { animation: none; }
+}
