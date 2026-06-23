@@ -1281,6 +1281,84 @@ footer {
   .c-text span, .c-text a { font-size: 17px; }
 }
 
+/* ─── LEGAL PAGES ─── */
+.legal-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 64px;
+}
+.legal-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin: 56px 0 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.legal-section h2:first-child {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+.legal-section h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 32px 0 10px;
+}
+.legal-section p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(240,237,232,.72);
+  margin-bottom: 16px;
+}
+.legal-section strong {
+  font-weight: 500;
+  color: var(--text);
+}
+.legal-section ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+.legal-section ul li {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(240,237,232,.72);
+  margin-bottom: 8px;
+}
+.legal-section a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: .65;
+  transition: opacity .2s;
+}
+.legal-section a:hover { opacity: 1; }
+.legal-address {
+  border-left: 2px solid var(--border);
+  padding: 16px 20px;
+  margin: 12px 0 20px;
+  background: var(--bg-2);
+}
+.legal-address p { margin: 0; }
+.legal-caps {
+  font-size: 13px;
+  letter-spacing: .5px;
+  line-height: 1.85;
+  text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .legal-section { padding: 60px 20px 80px; }
+}
+
 /* ─── WHATSAPP FLOAT BUTTON ─── */
 .wa-float {
   position: fixed;
