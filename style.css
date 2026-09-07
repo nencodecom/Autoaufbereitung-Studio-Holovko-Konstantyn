@@ -531,7 +531,8 @@ nav.nav-solid {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 248px;
+  /* skaliert mit der Breite, damit Hochformat-Kacheln hoch bleiben */
+  grid-auto-rows: clamp(200px, 19vw, 400px);
   gap: 14px;
 }
 .gallery-item {
@@ -579,6 +580,82 @@ nav.nav-solid {
 }
 .gi-wide { grid-column: span 2; }
 .gi-tall { grid-row: span 2; }
+.gi-big  { grid-column: span 2; grid-row: span 2; }
+
+/* Studio-Grid: zwei zentrierte Hochformat-Kacheln */
+.gallery-grid--studio {
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  grid-auto-rows: clamp(200px, 19vw, 360px);
+  justify-content: center;
+}
+
+/* ─── VIDEO-GALERIE ─── */
+.vid-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+.vid-item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-3);
+  aspect-ratio: 9 / 16;
+  transition: border-color .3s;
+}
+.vid-item:hover { border-color: rgba(255,255,255,.28); }
+.vid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-3);
+}
+.vid-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,.62) 0%, transparent 40%);
+  pointer-events: none;
+}
+.vid-cap {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 2;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+}
+.vid-cap span {
+  display: block;
+  margin-top: 3px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+/* Ladeindikator, solange der Clip noch nicht spielt */
+.vid-item::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.vid-item.loading::before { opacity: 1; animation: vidPulse 1.1s ease-in-out infinite; }
+@keyframes vidPulse { 0%,100% { transform: scale(1); opacity: .35; } 50% { transform: scale(1.5); opacity: .9; } }
+
 
 .gallery-cta {
   display: flex;
@@ -1397,4 +1474,19 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
   .wa-float { animation: none; }
+}
+
+@media (max-width: 1100px) {
+  .vid-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+}
+@media (max-width: 768px) {
+  .vid-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  .gi-big { grid-column: auto; grid-row: auto; }
+  .gallery-item.gi-big { aspect-ratio: 16 / 10; }
+  .gallery-grid--studio {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    justify-content: stretch;
+  }
 }
