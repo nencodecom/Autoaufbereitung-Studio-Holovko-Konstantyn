@@ -592,7 +592,7 @@ nav.nav-solid {
 /* ─── VIDEO-GALERIE ─── */
 .vid-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 14px;
 }
 .vid-item {
@@ -814,6 +814,79 @@ nav.nav-solid {
   transition: opacity .3s;
 }
 .service-card:hover .s-price { opacity: 1; }
+
+.s-badge {
+  position: absolute;
+  top: 22px; left: 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  padding: 4px 9px 3px;
+  border-radius: 2px;
+  z-index: 1;
+}
+.s-badge + .s-num { top: 18px; }
+.service-card .s-badge ~ .s-icon { margin-top: 26px; }
+.service-card--wide-main .s-icon { margin-top: 30px; }
+
+/* Breite Karte (Scheibentoenung) mit Preisliste nach Fahrzeugklasse */
+.service-card--wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.service-card--wide-main { position: relative; }
+.service-card--wide .s-badge { top: 0; left: 0; }
+.service-card--wide .s-num { top: -6px; right: 0; }
+.service-card--wide-prices {
+  border-left: 1px solid var(--border);
+  padding-left: 40px;
+  align-self: stretch;
+}
+.tint-price-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.tint-price-list {
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.tint-price-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  color: var(--text);
+}
+.tint-price-list li span:last-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tint-price-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 300;
+  margin: 16px 0 0;
+}
 
 .services-info-block {
   margin-top: 48px;
@@ -1332,6 +1405,9 @@ footer {
   .services-big-num { font-size: 60px; }
   .service-card { padding: 32px 24px; }
   .service-card:hover { transform: none; }
+  .service-card--wide { grid-template-columns: 1fr; gap: 28px; }
+  .service-card--wide-prices { border-left: 0; padding-left: 0; border-top: 1px solid var(--border); padding-top: 24px; }
+  .s-badge { left: 24px; }
 
   .feature-card { padding: 32px 24px; }
   .feature-card h3 { font-size: 36px; }
