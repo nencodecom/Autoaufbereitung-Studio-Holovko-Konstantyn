@@ -1505,7 +1505,7 @@ footer {
   footer { padding: 24px 20px; flex-direction: column; text-align: center; gap: 12px; }
   .footer-logo { justify-content: center; }
   .footer-copy { font-size: 13px; }
-  .footer-links { gap: 20px; justify-content: center; }
+  .footer-links { flex-wrap: wrap; gap: 12px 20px; justify-content: center; }
 
   .video-label { padding: 20px 24px; }
   .video-label strong { font-size: 20px; }
@@ -1525,6 +1525,7 @@ footer {
   max-width: 800px;
   margin: 0 auto;
   padding: 80px 64px;
+  overflow-wrap: anywhere;
 }
 .legal-section h2 {
   font-family: 'Bebas Neue', sans-serif;
